@@ -76,7 +76,7 @@
 <h2 id="静态分析结果的评定标准"><a href="#静态分析结果的评定标准" class="headerlink" title="静态分析结果的评定标准"></a>静态分析结果的评定标准</h2><p>Sound：<strong>全面的</strong>或者<strong>完备的</strong>，简单来说，满足Sound即允许错报不允许漏报</p>
 <p>Truth：<strong>真实的</strong>，顾名思义，就是一个程序真正存在的漏洞，是最理想的分析结果</p>
 <p>Complete：<strong>完整的</strong>，简单来说，满足Complete即允许漏报但不允许错报</p>
-<p><img src="/image-20251016154418743.png" alt="images"></p>
+<p><img src="/images/image-20251016154418743.png" alt="images"></p>
 <ul>
 <li>sound的结果：over-approximate，过拟合。牺牲 soundness 会产生漏报 false negatives</li>
 <li>complete的结果：under-approximate，弱拟合。牺牲 completeness 会产生误报 false positives</li>
@@ -84,8 +84,7 @@
 <p>Truth是Sound的子集，Complete又是Truth的子集，Sound属于一种Overapproximate，即过拟合，而Complete属于一种Underapproximate，即弱拟合。</p>
 <p><strong>在真实的程序分析中，显然我们首先需要做到Sound，在Sound的基础上不断向Truth靠拢</strong>，道理很简单，因为即使Sound里出现了错报，我们也还可以通过安全人员人工分析排除掉哪些错报的漏洞，而漏报带来的负面效果就不是那么好处理的了</p>
 <h1 id="编译器和静态分析器"><a href="#编译器和静态分析器" class="headerlink" title="编译器和静态分析器"></a>编译器和静态分析器</h1><p>对于静态类型语言，其源代码向机器码转化的过程大致如下：</p>
-<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251017082718521.png" alt="image-20251017082718521" style="zoom: 50%;" />
-
+<p><img src="/images/image-20251017082718521.png" alt="images"></p>
 <ul>
 <li><strong>Scanner</strong>： 扫描源代码，进行词法分析（Lexical Analysis）,词法分析会用到正则表达式（Regular Expression），词法分析后的结果为一个标记（Token）串。</li>
 <li><strong>Parser：</strong> 遍历标记串，进行语法分析（Syntax Analysis），这里的语法分析分析的是上下文无关的语法（Context Free Grammer），解析器的内部应该是实现了一个有限状态机，用于识别和分析每个语法块格式的正确性，语法分析的结果为一棵抽象语法树（Abstract Syntax Tree, AST）。</li>
@@ -97,10 +96,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">do i = i + 1; while (a[i] &lt; v);</span><br></pre></td></tr></table></figure>
 
 <p>AST和IR的结果分别是</p>
-<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251017083157100.png" alt="image-20251017083157100" style="zoom:50%;" />
-
-
-
+<p><img src="/images/image-20251017083157100.png" alt="images"></p>
 <ul>
 <li><strong>AST</strong> ：高级，更接近于语法结构，依赖于语言种类，适用于快速类型检查，缺少控制流信息</li>
 <li><strong>IR</strong>：低级，更接近于机器码，不依赖语言种类，压缩且简洁，包含控制流信息。是静态分析的基础</li>
@@ -114,8 +110,7 @@
 <li>t2&#x3D; t1 + 3</li>
 </ul>
 <p>其中a, b是原始变量，3是常数，t1和t2是编译过程中生成的临时变量</p>
-<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251017092337394.png" alt="image-20251017092337394" style="zoom:50%;" />
-
+<p><img src="/images/image-20251017092337394.png" alt="images"></p>
 <p>常见的的三地址码形式有，这里的x y z即三个地址</p>
 <ul>
 <li>x &#x3D; y bop z &#x2F;&#x2F;bop：二进制算术或逻辑运算 </li>
@@ -151,8 +146,7 @@
 <li>BB开头：第一个3AC &#x2F; goto的目标 &#x2F;goto的下一个语句</li>
 <li>BB结尾：goto语句 &#x2F; goto的目标的上一个语句</li>
 </ul>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251016160330662.png" alt="image-20251016160330662" style="zoom:67%;" />
-
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p><img src="/images/image-20251016160330662.png" alt="images"></p>
 <p>按照第一条原则，程序的第一条语句必须是leader，得到leader：(1)</p>
 <p>按照第二条原则，转移语句的目标语句必须是leader，得到leader：(3) (7) (12)</p>
 <p>按照第三条原则，紧跟在条件转移语句后面的语句必然是leader，得到leader：(5) (11) (12)</p>
@@ -161,9 +155,7 @@
 <h1 id="抽象域"><a href="#抽象域" class="headerlink" title="抽象域"></a>抽象域</h1><p>abstraction</p>
 <p>含五类符号：+ − O ⊤ ⊥，其中 ⊤ 表示unknown，⊥ 表示undefined。</p>
 <h1 id="数据流分析"><a href="#数据流分析" class="headerlink" title="数据流分析"></a>数据流分析</h1><p>Data Flow Analysis</p>
-<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251017085331439.png" alt="image-20251017085331439" style="zoom:50%;" />
-
-<p>​                                                                              数据流分析总览图</p>
+<p><img src="/images/image-20251017085331439.png" alt="images"></p>
 <p>不同的数据流分析 有 不同的数据<strong>抽象表达</strong> 和 不同的<strong>安全近似策略</strong>，如 不同的 <strong>转换规则</strong> 和 <strong>控制流</strong>处理。</p>
 <ul>
 <li>may analysis：outputs information that <strong>may</strong> be true (over-approximation)，输出的信息可能为真，需做over-approximation优化，才能成为Safe-approximation安全的近似，可以有误报。大多数静态分析都是may analysis。</li>
@@ -172,15 +164,11 @@
 <p>Nodes (BBs&#x2F;statements)、Edges (control flows)、CFG (a program)</p>
 <p>输入&#x2F;输出状态：程序执行前&#x2F;执行后的状态（本质就是抽象表达的数据的状态，如变量的状态）。</p>
 <p>数据流分析的结果：最终得到，每一个程序点对应一个数据流值(data-flow value)，表示该点所有可能程序状态的一个抽象。例如，我只关心x、y的值，我就用抽象来表示x、y所有可能的值的集合（输入&#x2F;输出的值域&#x2F;约束），就代表了该程序点的程序状态。</p>
-<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251017085750264.png" alt="image-20251017085750264" style="zoom:50%;" />
-
-<p>​                                                                        传递函数约束符号</p>
+<p><img src="/images/image-20251017085750264.png" alt="images"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Forward Analysis前向分析：按程序执行顺序的分析。OUT[s]=fs(IN[s])，s-statement</span><br><span class="line"></span><br><span class="line">Backward Analysis反向分析：逆向分析。IN[s]=fs(OUT[s])</span><br></pre></td></tr></table></figure>
 
 <p><strong>控制流约束</strong>：约束求解做的事情，推断计算输入到输出，或反向分析。</p>
-<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251017090023192.png" alt="image-20251017090023192" style="zoom:50%;" />
-
-<p>​                                                                                     控制流约束</p>
+<p><img src="/images/image-20251017090023192.png" alt="images"></p>
 <p>数据流分析的目标是，为每个程序点计算并关联一个数据流值。该数据流值是对到达该点的所有可能程序状态的一个<strong>安全近似</strong>（或<strong>保守估计</strong>），通常用一个n位向量等抽象表示来建模程序属性的集合（如变量的可用表达式、活跃性等）。</p>
 <p>为实现这一目标，分析过程基于以下两个核心要素进行迭代计算：</p>
 <ol>
@@ -209,8 +197,7 @@
 <li>从 块A 到 块B 之间有一个有向边，当且仅当”从A到B一个有条件或无条件跳转“，或“B是A后面的紧邻块且A最后一条指令不是无条件跳转”。</li>
 <li>将原来3AC序列中的所有 “跳转到某指令标签处” 改为 “跳转到某基本块处” 。</li>
 </ul>
-<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251017082040026.png" alt="image-20251017082040026" style="zoom:67%;" />
-
+<p><img src="/images/image-20251017082040026.png" alt="images"></p>
 <p>BB：{<strong>(1)</strong> (2)}；{<strong>(3)</strong> (4)}；{<strong>(5)</strong> (6)}；{<strong>(7)</strong> (8) (9) (10)}；{<strong>(11)</strong>}；{<strong>(12)</strong>}</p>
 <p>添加Entry &#x2F; Exit：没有块跳转到该块 &#x2F; 没有跳转到其他块。</p>
 <h1 id="程序的中间表示"><a href="#程序的中间表示" class="headerlink" title="程序的中间表示"></a>程序的中间表示</h1><p>编译器（Compiler）和静态分析器（Static Analyzer）的关系是什么？</p>
@@ -224,8 +211,7 @@
 <li>p到q之间的路径间，v没有再次被定义</li>
 <li>他们在CFG上是可达的</li>
 </ol>
-<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251017090023192.png" alt="image-20251017090023192" style="zoom:50%;" />
-
+<p><img src="/images/image-20251017090023192.png" alt="images"></p>
 <h2 id="1-公式分析"><a href="#1-公式分析" class="headerlink" title="(1)公式分析"></a>(1)公式分析</h2><p>IN[B]：块B的输入</p>
 <p>OUT[B]：块B的输出</p>
 <p>gen<sub>B</sub>：块B内的所有变量v的定义语句</p>
@@ -234,21 +220,17 @@
 <p><strong>解释</strong>：基本块B的输出 &#x3D; 块B内的所有变量v的定义（赋值&#x2F;修改）语句 U （块B的输入 - 程序中其它所有定义了变量v的语句）。本质就是本块与前驱修改变量的语句 作用之和（去掉前驱的重复修改语句）。</p>
 <p>上图中<strong>Control Flow</strong>：IN[B] &#x3D; U<sub>p a_predecesso_of_B</sub>OUT[P] </p>
 <p><strong>解释</strong>：基本块B的输入 &#x3D; 块B所有前驱块P的输出的并集。注意，所有前驱块意味着只要有一条路径能够到达块B，就是它的前驱，包括条件跳转与无条件跳转。</p>
-<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251020103407624.png" alt="image-20251020103407624" style="zoom: 50%;" />
-
+<p><img src="/images/image-20251020103407624.png" alt="images"></p>
 <h2 id="2-算法"><a href="#2-算法" class="headerlink" title="(2)算法"></a>(2)算法</h2><p>方法：首先所有基本块的OUT[B]初始化为空。遍历每一个基本块B，按以上两个公式计算块B的IN[B]和OUT[B]，只要这次遍历时有某个块的OUT[B]发生变化，则重新遍历一次（因为程序中有循环存在，只要某块的OUT[B]变了，就意味着后继块的IN[B]变了）。</p>
 <p>IN[B] &#x3D; U<sub>p a_predecesso_of_B</sub>&gt; OUT[P] </p>
 <p>OUT[B] &#x3D; gen<sub>B</sub>U (IN[B] - kill<sub>B</sub>)</p>
-<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251020111051842.png" alt="image-20251020111051842" style="zoom:50%;" />
-
-<h2 id="3-实例"><a href="#3-实例" class="headerlink" title="(3)实例"></a>(3)实例</h2><img src="https://upload-images.jianshu.io/upload_images/6349402-3de3f8f9fec8713f.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp" alt="img" style="zoom: 50%;" />
-
+<p><img src="/images/image-20251020111051842.png" alt="images"></p>
+<h2 id="3-实例"><a href="#3-实例" class="headerlink" title="(3)实例"></a>(3)实例</h2><p><img src="/images/1.png" alt="images"></p>
 <p>抽象表示：用n位向量来表示是否能够reach</p>
 <p>说明：红色：第一次遍历；蓝色：第二次遍历；绿色：第三次遍历</p>
 <p>结果：三次遍历之后，OUT[B]的结果不再发生变化</p>
 <h1 id="Live-Varialbes-Analysis-may-analysis"><a href="#Live-Varialbes-Analysis-may-analysis" class="headerlink" title="Live Varialbes Analysis(may analysis)"></a>Live Varialbes Analysis(may analysis)</h1><p>问题定义：某程序点p处的变量v，从p开始到exit块的CFG中是否有某条路径用到了v，如果用到了v，则v在p点为live，否则为dead。其中有一个隐含条件，在点p和引用点之间不能重定义v。</p>
-<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251020190511660.png" alt="image-20251020190511660" style="zoom: 67%;" />
-
+<p><img src="/images/image-20251020190511660.png" alt="images"></p>
 <p><strong>应用场景</strong>：可用于寄存器分配，如果寄存器满了，就需要替换掉不会被用到的变量。</p>
 <p><strong>抽象表示</strong>：程序中的n个变量用长度为n bit的向量来表示，对应bit为1，则该变量为live，反之为0则为dead。</p>
 <p>变量v在p点是存活的，当且仅当 ：</p>
@@ -260,14 +242,12 @@
 <p>Transfer Function：IN[B] &#x3D; use<sub>B</sub> U (OUT[B] - def<sub>B</sub>)</p>
 <p><strong>理解</strong>：IN[B] &#x3D; 本块中use出现在define之前的变量 U （OUT[B]出口的live情况 - 本块中出现的define的变量）。define指的是定义&#x2F;赋值。</p>
 <h2 id="2-算法-1"><a href="#2-算法-1" class="headerlink" title="(2)算法"></a>(2)算法</h2><p>方法：首先初始化每个基本块的IN[B]为空集。遍历每一个基本块B，按以上两个公式计算块B的OUT[B]和IN[B]，只要这次遍历时有某个块的IN[B]发生变化，则重新遍历一次（因为有循环，只要某块的IN[B]变了，就意味前驱块的OUT[B]变了）。</p>
-<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251020193908021.png" alt="image-20251020193908021" style="zoom:50%;" />
-
+<p><img src="/images/image-20251020193908021.png" alt="images"></p>
 <p><strong>初始化规律</strong>：一般情况下，may analysis 全部初始化为空，must analysis全部初始化为all。</p>
 <h2 id="3-实例-1"><a href="#3-实例-1" class="headerlink" title="(3)实例"></a>(3)实例</h2><p><strong>抽象表示</strong>：程序中的n个变量用长度为n bit的向量来表示，对应bit为1，则该变量为live，反之为0则为dead。</p>
 <p><strong>说明</strong>：从下往上遍历基本块，黑色-初始化；红色-第1次；蓝色-第2次；绿色-第3次。</p>
 <p><strong>结果</strong>：3次遍历后，IN[B]不再变化，遍历结束。</p>
-<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251020194144330.png" alt="image-20251020194144330" style="zoom: 50%;" />
-
+<p><img src="/images/image-20251020194144330.png" alt="images"></p>
 <h1 id="Available-Expressions-Analysis-must-analysis"><a href="#Available-Expressions-Analysis-must-analysis" class="headerlink" title="Available Expressions Analysis(must analysis)"></a>Available Expressions Analysis(must analysis)</h1><h2 id="1-公式分析-2"><a href="#1-公式分析-2" class="headerlink" title="(1)公式分析"></a>(1)公式分析</h2><h2 id="2-算法-2"><a href="#2-算法-2" class="headerlink" title="(2)算法"></a>(2)算法</h2><h2 id="3-实例-2"><a href="#3-实例-2" class="headerlink" title="(3)实例"></a>(3)实例</h2><h1 id="抽象表示：n位向量"><a href="#抽象表示：n位向量" class="headerlink" title="抽象表示：n位向量"></a>抽象表示：n位向量</h1><p><img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251017192513064.png" alt="image-20251017192513064"></p>
 
       
