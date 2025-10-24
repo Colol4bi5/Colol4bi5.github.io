@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Colol4bi5&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Colol4bi5&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Compiler" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/10/24/Compiler/" class="article-date">
+  <time class="dt-published" datetime="2025-10-24T09:47:17.915Z" itemprop="datePublished">2025-10-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Compiler"><a href="#Compiler" class="headerlink" title="Compiler"></a>Compiler</h1><ul>
+<li>Definition  Source code-&gt;compiler-&gt;Assemble Code-&gt;assember-&gt;linker-&gt;Target code</li>
+<li>History</li>
+</ul>
+<h1 id="Different-Compiler"><a href="#Different-Compiler" class="headerlink" title="Different Compiler"></a>Different Compiler</h1><ul>
+<li>Native compiler</li>
+<li>Cross-compiler</li>
+<li>Source-to-source compiler</li>
+</ul>
+<p>Source language-&gt;Target language</p>
+<h1 id="Compiler-vs-Interpreter"><a href="#Compiler-vs-Interpreter" class="headerlink" title="Compiler vs Interpreter"></a>Compiler vs Interpreter</h1><p>Performance: Compiler&gt;Interpreter</p>
+<p>Compiler dominate low-level languages</p>
+<ul>
+<li>C C++ Go RUST</li>
+</ul>
+<p>Interpreter dominate high-level languages</p>
+<ul>
+<li>Python Perl Shell</li>
+</ul>
+<p>both</p>
+<ul>
+<li>Java Javascript WebAssembly</li>
+<li>Interpreter + Just in Time compile</li>
+</ul>
+<h1 id="Compiling-Pipeline"><a href="#Compiling-Pipeline" class="headerlink" title="Compiling Pipeline"></a>Compiling Pipeline</h1><h2 id="Compiling"><a href="#Compiling" class="headerlink" title="Compiling"></a>Compiling</h2><ul>
+<li>Lexical Analysis: identify words</li>
+<li>Syntax Analysis: identify sentences</li>
+<li>Semantic Analysis: analyze sentences</li>
+<li>Optimization: editing</li>
+<li>Code generation: translation</li>
+</ul>
+<h2 id="Lexical-Analysis"><a href="#Lexical-Analysis" class="headerlink" title="Lexical Analysis"></a>Lexical Analysis</h2><ul>
+<li>Scanning: breaking an input into its smallest meaningful units, called <strong>tokens</strong></li>
+</ul>
+<h3 id="Token"><a href="#Token" class="headerlink" title="Token"></a><strong>Token</strong></h3><ul>
+<li>&lt;name,attribute-value&gt;</li>
+</ul>
+<h2 id="Syntax-Analysis"><a href="#Syntax-Analysis" class="headerlink" title="Syntax Analysis"></a>Syntax Analysis</h2><ul>
+<li>Parser: fit a sequence of tokens into a specified syntax</li>
+</ul>
+<h3 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h3><ul>
+<li>defines the valid structure and form of statements (or expressions) in the language</li>
+<li>Context-Free grammar, CFG</li>
+</ul>
+<h2 id="Semantic-Analysis"><a href="#Semantic-Analysis" class="headerlink" title="Semantic Analysis"></a>Semantic Analysis</h2><ul>
+<li>use the syntax tree and information in the symbol table to check the source program for <strong>semantic consistency</strong> with the language definition<ul>
+<li>type checking</li>
+<li>……</li>
+</ul>
+</li>
+</ul>
+<h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h2><ul>
+<li><strong>Optimization &#x3D; Analysis + Transformation</strong></li>
+</ul>
+<p><strong>must be:</strong></p>
+<ul>
+<li>Semantics-preserving(safe)</li>
+<li>Profitable</li>
+<li>Widely applicable</li>
+<li>Cheap to perform: time and complexity?</li>
+</ul>
+<p><strong>“Optimization” may affect floating-point precision</strong></p>
+<ul>
+<li>Floating-Point Representation in binary</li>
+<li>Round-off error</li>
+<li>Error Propagation</li>
+</ul>
+<h2 id="Code-generation"><a href="#Code-generation" class="headerlink" title="Code generation"></a>Code generation</h2><ul>
+<li>produces assembly code</li>
+<li></li>
+</ul>
+<h1 id="Intermediate-Representation-IR"><a href="#Intermediate-Representation-IR" class="headerlink" title="Intermediate Representation (IR)"></a>Intermediate Representation (IR)</h1><ul>
+<li>High-level language -&gt; IR -&gt;low-level language</li>
+</ul>
+<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251023203923346.png" alt="image-20251023203923346" style="zoom: 20%;" />
+
+<p>One Example: Code generation of LLVM</p>
+<img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251023204523048.png" alt="image-20251023204523048" style="zoom:20%;" />
+
+<h1 id="Compiler-Structure"><a href="#Compiler-Structure" class="headerlink" title="Compiler Structure"></a>Compiler Structure</h1><img src="C:\Users\12265\AppData\Roaming\Typora\typora-user-images\image-20251023204714696.png" alt="image-20251023204714696" style="zoom:33%;" />
+
+<h1 id="Control-Flow-Graph-CFG"><a href="#Control-Flow-Graph-CFG" class="headerlink" title="Control Flow Graph(CFG)"></a>Control Flow Graph(CFG)</h1><p>G &#x3D; (N, E)</p>
+<p>N: nodes, Basic block</p>
+<p>E: edges</p>
+<h1 id="Basic-block-BB"><a href="#Basic-block-BB" class="headerlink" title="Basic block(BB)"></a>Basic block(BB)</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h2><ul>
+<li>A basic block is a <strong>maximal</strong> sequence of instructions that can be entered <strong>only</strong> at the first of them and exited <strong>only</strong> from the last of them</li>
+</ul>
+<h1 id="Reaching-Definitions"><a href="#Reaching-Definitions" class="headerlink" title="Reaching Definitions"></a>Reaching Definitions</h1><p>A definition is an assignment of some value to a variable</p>
+<ul>
+<li>S<del>k</del> is a definition of variable V<del>1</del></li>
+<li>S<del>k</del> is a use of V<del>2</del> and V<del>3</del></li>
+<li>S<del>k</del> : V<del>1</del> &#x3D; V<del>2</del> + V<del>3</del></li>
+</ul>
+<h1 id="Grading"><a href="#Grading" class="headerlink" title="Grading"></a>Grading</h1><ul>
+<li>Experiment assignment + paper reading 40%</li>
+<li>Final exam(Open-book examination)</li>
+<li>Daily performance</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/10/24/Compiler/" data-id="cmh4o4g3c0000sstf3ne806oi" data-title="" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/10/21/Static%20Analysis/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">静态分析个人笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/10/24/Compiler/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/21/Static%20Analysis/">静态分析个人笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">十月 2025</a></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2025 By Autoload<br>
+      Driven - <a href="https://hexo.io/" target="_blank">Hexo</a>|Theme - <a href="https://github.com/autoload/hexo-theme-auto" target="_blank">Auto</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
